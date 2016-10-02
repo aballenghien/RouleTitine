@@ -63,8 +63,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dao\DALCarburant.cs" />
+    <Compile Include="Dao\DALEntretienAFaire.cs" />
+    <Compile Include="Dao\DALMarque.cs" />
+    <Compile Include="Dao\DALModele.cs" />
+    <Compile Include="Dao\DALVoiture.cs" />
     <Compile Include="Dao\ConnexionSql.cs" />
     <Compile Include="Dao\DALConducteur.cs" />
+    <Compile Include="Dao\DALEntretienRegulier.cs" />
     <Compile Include="Database1DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -20,5 +20,10 @@ namespace GestionVoiture
                 this.nom = value;
             }
         }
+
+        public override string ToString()
+        {
+            return this.nom;
+        }
     }
 }

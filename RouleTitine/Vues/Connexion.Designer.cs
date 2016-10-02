@@ -57,6 +57,7 @@
             // 
             this.txtPwd.Location = new System.Drawing.Point(115, 119);
             this.txtPwd.Name = "txtPwd";
+            this.txtPwd.PasswordChar = '*';
             this.txtPwd.Size = new System.Drawing.Size(100, 20);
             this.txtPwd.TabIndex = 2;
             // 

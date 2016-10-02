@@ -28,15 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtImmatriculation = new System.Windows.Forms.TextBox();
-            this.ImgNouvelleVoiture = new System.Windows.Forms.PictureBox();
-            this.txtKilometrage = new System.Windows.Forms.TextBox();
+            this.components = new System.ComponentModel.Container();
+            this.imgNouvelleVoiture = new System.Windows.Forms.PictureBox();
             this.lstCarburant = new System.Windows.Forms.ComboBox();
             this.lstMarque = new System.Windows.Forms.ComboBox();
             this.lstModele = new System.Windows.Forms.ComboBox();
             this.dtPickDateMiseEnCircu = new System.Windows.Forms.DateTimePicker();
             this.dtPickDateAchat = new System.Windows.Forms.DateTimePicker();
-            this.txtVolReserv = new System.Windows.Forms.TextBox();
             this.lblImmatriculation = new System.Windows.Forms.Label();
             this.lblKilometrage = new System.Windows.Forms.Label();
             this.lblDtMiseEnCircu = new System.Windows.Forms.Label();
@@ -47,30 +45,29 @@
             this.lblModele = new System.Windows.Forms.Label();
             this.btnEnrVoiture = new System.Windows.Forms.Button();
             this.btnAnnuler = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.ImgNouvelleVoiture)).BeginInit();
+            this.txtCarburant = new System.Windows.Forms.TextBox();
+            this.txtMarque = new System.Windows.Forms.TextBox();
+            this.btnOkMarque = new System.Windows.Forms.Button();
+            this.btnOkCarburant = new System.Windows.Forms.Button();
+            this.openPicture = new System.Windows.Forms.OpenFileDialog();
+            this.btnOpenImg = new System.Windows.Forms.Button();
+            this.txtImmatriculation = new System.Windows.Forms.MaskedTextBox();
+            this.toolTipImmat = new System.Windows.Forms.ToolTip(this.components);
+            this.txtKilometrage = new System.Windows.Forms.MaskedTextBox();
+            this.toolTipKm = new System.Windows.Forms.ToolTip(this.components);
+            this.txtVolReserv = new System.Windows.Forms.MaskedTextBox();
+            this.toolTipVolReserv = new System.Windows.Forms.ToolTip(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.imgNouvelleVoiture)).BeginInit();
             this.SuspendLayout();
             // 
-            // txtImmatriculation
+            // imgNouvelleVoiture
             // 
-            this.txtImmatriculation.Location = new System.Drawing.Point(155, 149);
-            this.txtImmatriculation.Name = "txtImmatriculation";
-            this.txtImmatriculation.Size = new System.Drawing.Size(226, 20);
-            this.txtImmatriculation.TabIndex = 0;
-            // 
-            // ImgNouvelleVoiture
-            // 
-            this.ImgNouvelleVoiture.Location = new System.Drawing.Point(365, 13);
-            this.ImgNouvelleVoiture.Name = "ImgNouvelleVoiture";
-            this.ImgNouvelleVoiture.Size = new System.Drawing.Size(214, 109);
-            this.ImgNouvelleVoiture.TabIndex = 1;
-            this.ImgNouvelleVoiture.TabStop = false;
-            // 
-            // txtKilometrage
-            // 
-            this.txtKilometrage.Location = new System.Drawing.Point(155, 178);
-            this.txtKilometrage.Name = "txtKilometrage";
-            this.txtKilometrage.Size = new System.Drawing.Size(226, 20);
-            this.txtKilometrage.TabIndex = 2;
+            this.imgNouvelleVoiture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.imgNouvelleVoiture.Location = new System.Drawing.Point(422, 12);
+            this.imgNouvelleVoiture.Name = "imgNouvelleVoiture";
+            this.imgNouvelleVoiture.Size = new System.Drawing.Size(214, 109);
+            this.imgNouvelleVoiture.TabIndex = 1;
+            this.imgNouvelleVoiture.TabStop = false;
             // 
             // lstCarburant
             // 
@@ -79,6 +76,7 @@
             this.lstCarburant.Name = "lstCarburant";
             this.lstCarburant.Size = new System.Drawing.Size(226, 21);
             this.lstCarburant.TabIndex = 6;
+            this.lstCarburant.SelectionChangeCommitted += new System.EventHandler(this.lstCarburant_SelectionChangeCommitted);
             // 
             // lstMarque
             // 
@@ -87,14 +85,17 @@
             this.lstMarque.Name = "lstMarque";
             this.lstMarque.Size = new System.Drawing.Size(226, 21);
             this.lstMarque.TabIndex = 7;
+            this.lstMarque.SelectedIndexChanged += new System.EventHandler(this.lstMarque_SelectedIndexChanged);
             // 
             // lstModele
             // 
+            this.lstModele.Enabled = false;
             this.lstModele.FormattingEnabled = true;
             this.lstModele.Location = new System.Drawing.Point(155, 354);
             this.lstModele.Name = "lstModele";
             this.lstModele.Size = new System.Drawing.Size(226, 21);
             this.lstModele.TabIndex = 8;
+            this.lstModele.SelectionChangeCommitted += new System.EventHandler(this.lstModele_SelectionChangeCommitted);
             // 
             // dtPickDateMiseEnCircu
             // 
@@ -109,13 +110,6 @@
             this.dtPickDateAchat.Name = "dtPickDateAchat";
             this.dtPickDateAchat.Size = new System.Drawing.Size(226, 20);
             this.dtPickDateAchat.TabIndex = 10;
-            // 
-            // txtVolReserv
-            // 
-            this.txtVolReserv.Location = new System.Drawing.Point(155, 265);
-            this.txtVolReserv.Name = "txtVolReserv";
-            this.txtVolReserv.Size = new System.Drawing.Size(226, 20);
-            this.txtVolReserv.TabIndex = 11;
             // 
             // lblImmatriculation
             // 
@@ -197,6 +191,7 @@
             this.btnEnrVoiture.TabIndex = 20;
             this.btnEnrVoiture.Text = "Enregistrer";
             this.btnEnrVoiture.UseVisualStyleBackColor = true;
+            this.btnEnrVoiture.Click += new System.EventHandler(this.btnEnrVoiture_Click);
             // 
             // btnAnnuler
             // 
@@ -206,12 +201,103 @@
             this.btnAnnuler.TabIndex = 21;
             this.btnAnnuler.Text = "Annuler";
             this.btnAnnuler.UseVisualStyleBackColor = true;
+            this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
+            // 
+            // txtCarburant
+            // 
+            this.txtCarburant.Location = new System.Drawing.Point(387, 295);
+            this.txtCarburant.Name = "txtCarburant";
+            this.txtCarburant.Size = new System.Drawing.Size(100, 20);
+            this.txtCarburant.TabIndex = 22;
+            this.txtCarburant.Visible = false;
+            // 
+            // txtMarque
+            // 
+            this.txtMarque.Location = new System.Drawing.Point(387, 324);
+            this.txtMarque.Name = "txtMarque";
+            this.txtMarque.Size = new System.Drawing.Size(100, 20);
+            this.txtMarque.TabIndex = 23;
+            this.txtMarque.Visible = false;
+            // 
+            // btnOkMarque
+            // 
+            this.btnOkMarque.Location = new System.Drawing.Point(493, 321);
+            this.btnOkMarque.Name = "btnOkMarque";
+            this.btnOkMarque.Size = new System.Drawing.Size(32, 23);
+            this.btnOkMarque.TabIndex = 24;
+            this.btnOkMarque.Text = "OK";
+            this.btnOkMarque.UseVisualStyleBackColor = true;
+            this.btnOkMarque.Visible = false;
+            this.btnOkMarque.Click += new System.EventHandler(this.btnOkMarque_Click);
+            // 
+            // btnOkCarburant
+            // 
+            this.btnOkCarburant.Location = new System.Drawing.Point(493, 295);
+            this.btnOkCarburant.Name = "btnOkCarburant";
+            this.btnOkCarburant.Size = new System.Drawing.Size(32, 23);
+            this.btnOkCarburant.TabIndex = 25;
+            this.btnOkCarburant.Text = "OK";
+            this.btnOkCarburant.UseVisualStyleBackColor = true;
+            this.btnOkCarburant.Visible = false;
+            this.btnOkCarburant.Click += new System.EventHandler(this.btnOkCarburant_Click);
+            // 
+            // openPicture
+            // 
+            this.openPicture.FileName = "openFileDialog1";
+            // 
+            // btnOpenImg
+            // 
+            this.btnOpenImg.Location = new System.Drawing.Point(422, 128);
+            this.btnOpenImg.Name = "btnOpenImg";
+            this.btnOpenImg.Size = new System.Drawing.Size(75, 23);
+            this.btnOpenImg.TabIndex = 26;
+            this.btnOpenImg.Text = "Parcourir ...";
+            this.btnOpenImg.UseVisualStyleBackColor = true;
+            this.btnOpenImg.Click += new System.EventHandler(this.btnOpenImg_Click);
+            // 
+            // txtImmatriculation
+            // 
+            this.txtImmatriculation.BeepOnError = true;
+            this.txtImmatriculation.Location = new System.Drawing.Point(155, 149);
+            this.txtImmatriculation.Mask = "AA-999-AA";
+            this.txtImmatriculation.Name = "txtImmatriculation";
+            this.txtImmatriculation.Size = new System.Drawing.Size(226, 20);
+            this.txtImmatriculation.TabIndex = 27;
+            this.txtImmatriculation.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.txtImmatriculation_MaskInputRejected);
+            // 
+            // txtKilometrage
+            // 
+            this.txtKilometrage.BeepOnError = true;
+            this.txtKilometrage.Location = new System.Drawing.Point(155, 178);
+            this.txtKilometrage.Mask = "9999999";
+            this.txtKilometrage.Name = "txtKilometrage";
+            this.txtKilometrage.Size = new System.Drawing.Size(226, 20);
+            this.txtKilometrage.TabIndex = 28;
+            this.txtKilometrage.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.txtKilometrage_MaskInputRejected);
+            // 
+            // txtVolReserv
+            // 
+            this.txtVolReserv.BeepOnError = true;
+            this.txtVolReserv.Location = new System.Drawing.Point(155, 265);
+            this.txtVolReserv.Mask = "999";
+            this.txtVolReserv.Name = "txtVolReserv";
+            this.txtVolReserv.Size = new System.Drawing.Size(226, 20);
+            this.txtVolReserv.TabIndex = 29;
+            this.txtVolReserv.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.txtVolReserv_MaskInputRejected);
             // 
             // NouvelleVoiture
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(645, 465);
+            this.Controls.Add(this.txtVolReserv);
+            this.Controls.Add(this.txtKilometrage);
+            this.Controls.Add(this.txtImmatriculation);
+            this.Controls.Add(this.btnOpenImg);
+            this.Controls.Add(this.btnOkCarburant);
+            this.Controls.Add(this.btnOkMarque);
+            this.Controls.Add(this.txtMarque);
+            this.Controls.Add(this.txtCarburant);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnEnrVoiture);
             this.Controls.Add(this.lblModele);
@@ -222,18 +308,15 @@
             this.Controls.Add(this.lblDtMiseEnCircu);
             this.Controls.Add(this.lblKilometrage);
             this.Controls.Add(this.lblImmatriculation);
-            this.Controls.Add(this.txtVolReserv);
             this.Controls.Add(this.dtPickDateAchat);
             this.Controls.Add(this.dtPickDateMiseEnCircu);
             this.Controls.Add(this.lstModele);
             this.Controls.Add(this.lstMarque);
             this.Controls.Add(this.lstCarburant);
-            this.Controls.Add(this.txtKilometrage);
-            this.Controls.Add(this.ImgNouvelleVoiture);
-            this.Controls.Add(this.txtImmatriculation);
+            this.Controls.Add(this.imgNouvelleVoiture);
             this.Name = "NouvelleVoiture";
             this.Text = "NouvelleVoiture";
-            ((System.ComponentModel.ISupportInitialize)(this.ImgNouvelleVoiture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgNouvelleVoiture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -241,15 +324,12 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtImmatriculation;
-        private System.Windows.Forms.PictureBox ImgNouvelleVoiture;
-        private System.Windows.Forms.TextBox txtKilometrage;
+        private System.Windows.Forms.PictureBox imgNouvelleVoiture;
         private System.Windows.Forms.ComboBox lstCarburant;
         private System.Windows.Forms.ComboBox lstMarque;
         private System.Windows.Forms.ComboBox lstModele;
         private System.Windows.Forms.DateTimePicker dtPickDateMiseEnCircu;
         private System.Windows.Forms.DateTimePicker dtPickDateAchat;
-        private System.Windows.Forms.TextBox txtVolReserv;
         private System.Windows.Forms.Label lblImmatriculation;
         private System.Windows.Forms.Label lblKilometrage;
         private System.Windows.Forms.Label lblDtMiseEnCircu;
@@ -260,5 +340,17 @@
         private System.Windows.Forms.Label lblModele;
         private System.Windows.Forms.Button btnEnrVoiture;
         private System.Windows.Forms.Button btnAnnuler;
+        private System.Windows.Forms.TextBox txtCarburant;
+        private System.Windows.Forms.TextBox txtMarque;
+        private System.Windows.Forms.Button btnOkMarque;
+        private System.Windows.Forms.Button btnOkCarburant;
+        private System.Windows.Forms.OpenFileDialog openPicture;
+        private System.Windows.Forms.Button btnOpenImg;
+        private System.Windows.Forms.MaskedTextBox txtImmatriculation;
+        private System.Windows.Forms.ToolTip toolTipImmat;
+        private System.Windows.Forms.MaskedTextBox txtKilometrage;
+        private System.Windows.Forms.ToolTip toolTipKm;
+        private System.Windows.Forms.MaskedTextBox txtVolReserv;
+        private System.Windows.Forms.ToolTip toolTipVolReserv;
     }
 }

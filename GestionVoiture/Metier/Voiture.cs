@@ -8,7 +8,7 @@ namespace GestionVoiture
     public class Voiture
     {
         private string immatriculation;
-        private double kilometrage;
+        private int kilometrage;
         private DateTime dateMiseEnCirculation;
         private DateTime dateAchat;
         private DateTime dateVente;
@@ -16,6 +16,7 @@ namespace GestionVoiture
         private Modele modele;
         private Carburant carburant;
         private Conducteur conducteur;
+        private byte[] image;
 
         public Carburant _Carburant
         {
@@ -101,7 +102,7 @@ namespace GestionVoiture
             }
         }
 
-        public double _Kilometrage
+        public int _Kilometrage
         {
             get
             {
@@ -113,7 +114,7 @@ namespace GestionVoiture
             }
         }
 
-        public int _VolumeReservoire
+        public int _VolumeReservoir
         {
             get
             {
@@ -125,6 +126,17 @@ namespace GestionVoiture
             }
         }
 
+        public byte[] _Image
+        {
+            get
+            {
+                return this.image;
+            }
+            set
+            {
+                this.image = value;
+            }
+        }
 
     }
 }

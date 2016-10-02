@@ -7,8 +7,8 @@ namespace GestionVoiture
 {
     public abstract class Entretien
     {
+        private long id;
         private string nom;
-        private decimal prix;
 
         public string _Nom
         {
@@ -22,16 +22,17 @@ namespace GestionVoiture
             }
         }
 
-        public decimal _Prix
+        public long _Id
         {
             get
             {
-                return this.prix;
+                return this.id;
             }
             set
             {
-                this.prix = value;
+                this.id = value;
             }
         }
+
     }
 }

@@ -7,8 +7,18 @@ namespace GestionVoiture
 {
     public class Marque
     {
+
         private string nom;
 
+        public Marque(string nom)
+        {
+            this.nom = nom;
+        }
+
+        public Marque()
+        {
+
+        }
         public string _Nom
         {
             get
@@ -19,6 +29,11 @@ namespace GestionVoiture
             {
                 this.nom = value;
             }
+        }
+
+        public override string ToString()
+        {
+            return this.nom;
         }
     }
 }

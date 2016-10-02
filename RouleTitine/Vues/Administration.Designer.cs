@@ -45,6 +45,7 @@
             this.btnAnnuler = new System.Windows.Forms.Button();
             this.infoMail = new System.Windows.Forms.ToolTip(this.components);
             this.lblErreur = new System.Windows.Forms.Label();
+            this.lblInfoMail = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtNomConducteur
@@ -52,7 +53,7 @@
             this.txtNomConducteur.Location = new System.Drawing.Point(200, 67);
             this.txtNomConducteur.Name = "txtNomConducteur";
             this.txtNomConducteur.Size = new System.Drawing.Size(177, 20);
-            this.txtNomConducteur.TabIndex = 0;
+            this.txtNomConducteur.TabIndex = 1;
             // 
             // lblNomConducteur
             // 
@@ -60,7 +61,7 @@
             this.lblNomConducteur.Location = new System.Drawing.Point(156, 70);
             this.lblNomConducteur.Name = "lblNomConducteur";
             this.lblNomConducteur.Size = new System.Drawing.Size(38, 13);
-            this.lblNomConducteur.TabIndex = 1;
+            this.lblNomConducteur.TabIndex = 0;
             this.lblNomConducteur.Text = "Nom : ";
             // 
             // lblPrenomConducteur
@@ -84,7 +85,7 @@
             this.txtIdentifiant.Location = new System.Drawing.Point(201, 143);
             this.txtIdentifiant.Name = "txtIdentifiant";
             this.txtIdentifiant.Size = new System.Drawing.Size(177, 20);
-            this.txtIdentifiant.TabIndex = 4;
+            this.txtIdentifiant.TabIndex = 5;
             // 
             // lblIdentifiantf
             // 
@@ -92,7 +93,7 @@
             this.lblIdentifiantf.Location = new System.Drawing.Point(133, 146);
             this.lblIdentifiantf.Name = "lblIdentifiantf";
             this.lblIdentifiantf.Size = new System.Drawing.Size(62, 13);
-            this.lblIdentifiantf.TabIndex = 5;
+            this.lblIdentifiantf.TabIndex = 4;
             this.lblIdentifiantf.Text = "Identifiant : ";
             // 
             // txtPwd1
@@ -101,7 +102,7 @@
             this.txtPwd1.Name = "txtPwd1";
             this.txtPwd1.PasswordChar = '*';
             this.txtPwd1.Size = new System.Drawing.Size(177, 20);
-            this.txtPwd1.TabIndex = 6;
+            this.txtPwd1.TabIndex = 9;
             // 
             // txtPwd2
             // 
@@ -109,14 +110,14 @@
             this.txtPwd2.Name = "txtPwd2";
             this.txtPwd2.PasswordChar = '*';
             this.txtPwd2.Size = new System.Drawing.Size(177, 20);
-            this.txtPwd2.TabIndex = 7;
+            this.txtPwd2.TabIndex = 11;
             // 
             // txtMail
             // 
             this.txtMail.Location = new System.Drawing.Point(201, 181);
             this.txtMail.Name = "txtMail";
             this.txtMail.Size = new System.Drawing.Size(177, 20);
-            this.txtMail.TabIndex = 8;
+            this.txtMail.TabIndex = 7;
             // 
             // lblMail
             // 
@@ -124,7 +125,7 @@
             this.lblMail.Location = new System.Drawing.Point(111, 184);
             this.lblMail.Name = "lblMail";
             this.lblMail.Size = new System.Drawing.Size(84, 13);
-            this.lblMail.TabIndex = 9;
+            this.lblMail.TabIndex = 6;
             this.lblMail.Text = "Adresse e-mail : ";
             // 
             // lblPwd1
@@ -133,7 +134,7 @@
             this.lblPwd1.Location = new System.Drawing.Point(115, 222);
             this.lblPwd1.Name = "lblPwd1";
             this.lblPwd1.Size = new System.Drawing.Size(80, 13);
-            this.lblPwd1.TabIndex = 10;
+            this.lblPwd1.TabIndex = 8;
             this.lblPwd1.Text = "Mot de passe : ";
             // 
             // label1
@@ -142,7 +143,7 @@
             this.label1.Location = new System.Drawing.Point(46, 260);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(149, 13);
-            this.label1.TabIndex = 11;
+            this.label1.TabIndex = 10;
             this.label1.Text = "Retapez votre mot de passe : ";
             // 
             // btnEnregistrer
@@ -174,11 +175,22 @@
             this.lblErreur.Size = new System.Drawing.Size(0, 13);
             this.lblErreur.TabIndex = 14;
             // 
+            // lblInfoMail
+            // 
+            this.lblInfoMail.AutoSize = true;
+            this.lblInfoMail.Location = new System.Drawing.Point(384, 184);
+            this.lblInfoMail.Name = "lblInfoMail";
+            this.lblInfoMail.Size = new System.Drawing.Size(19, 13);
+            this.lblInfoMail.TabIndex = 15;
+            this.lblInfoMail.Text = "??";
+            this.lblInfoMail.MouseHover += new System.EventHandler(this.lblInfoMail_MouseHover);
+            // 
             // Administration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(532, 378);
+            this.Controls.Add(this.lblInfoMail);
             this.Controls.Add(this.lblErreur);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnEnregistrer);
@@ -219,5 +231,6 @@
         private System.Windows.Forms.Button btnAnnuler;
         private System.Windows.Forms.ToolTip infoMail;
         private System.Windows.Forms.Label lblErreur;
+        private System.Windows.Forms.Label lblInfoMail;
     }
 }

@@ -7,9 +7,22 @@ namespace GestionVoiture
 {
     public class EntretienAFaire
     {
+        private long id;
         private EntretienRegulier entretienRegulier;
         private Modele modele;
 
+
+        public long _Id
+        {
+            get
+            {
+                return this.id;
+            }
+            set
+            {
+                this.id = value;
+            }
+        }
         public EntretienRegulier _EntretienRegulier
         {
             get

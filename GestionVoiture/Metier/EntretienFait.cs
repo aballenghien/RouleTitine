@@ -7,12 +7,14 @@ namespace GestionVoiture
 {
     public class EntretienFait
     {
+        private long id;
         private DateTime date;
         private int kilometrage;
         private string commentaire;
         private Voiture voiture;
         private Garage garage;
         private Entretien entretien;
+        private decimal prix;
 
         public Voiture _Voiture
         {
@@ -83,6 +85,30 @@ namespace GestionVoiture
             set
             {
                 this.commentaire = value;
+            }
+        }
+
+        public decimal _Prix
+        {
+            get
+            {
+                return this.prix;
+            }
+            set
+            {
+                this.prix = value;
+            }
+        }
+
+        public long _Id
+        {
+            get
+            {
+                return this.id;
+            }
+            set
+            {
+                this.id= value;
             }
         }
     }

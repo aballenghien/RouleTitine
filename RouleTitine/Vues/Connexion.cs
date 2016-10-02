@@ -33,7 +33,7 @@ namespace RouleTitine
             byte[] pass = sha.ComputeHash(bytes);
             if (pass.SequenceEqual(c._Password))
             {
-                MenuVoiture mnu = new MenuVoiture();
+                MenuVoiture mnu = new MenuVoiture(c);
                 mnu.Show();
                 this.Visible = false;
             }

@@ -7,9 +7,21 @@ namespace GestionVoiture
 {
     public class Modele
     {
+        private long id;
         private string nom;
         private Marque marque;
 
+        public long _Id
+        {
+            get
+            {
+                return this.id;
+            }
+            set
+            {
+                this.id = value;
+            }
+        }
         public Marque _Marque
         {
             get
@@ -32,6 +44,11 @@ namespace GestionVoiture
             {
                 this.nom = value;
             }
+        }
+
+        public override string ToString()
+        {
+            return this.nom;
         }
     }
 }

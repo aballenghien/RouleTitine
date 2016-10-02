@@ -90,5 +90,11 @@ namespace RouleTitine
 
             return controle;
         }
+
+        private void lblInfoMail_MouseHover(object sender, EventArgs e)
+        {
+            this.infoMail.ToolTipTitle = "Information";
+            infoMail.Show("L'adresse mail servira pour la gestion de votre mot de passe uniquement", lblInfoMail, lblInfoMail.Location, 5000);
+        }
     }
 }

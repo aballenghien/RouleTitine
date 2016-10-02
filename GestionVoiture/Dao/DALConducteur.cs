@@ -70,18 +70,43 @@ namespace GestionVoiture
             MySqlCommand requete = new MySqlCommand();
             requete.Connection = ConnexionSql.Instance._Cnx;
             ConnexionSql.OpenConnexion();
-            requete.CommandText = "SELECT nom, prenom, motDePasse, mail, identifiant FROM Conducteur WHERE identifiant=@id;";
-            requete.Parameters.AddWithValue("@id", id);
+            requete.CommandText = "SELECT id,nom, prenom, motDePasse, mail, identifiant FROM Conducteur WHERE identifiant=@identifiant;";
+            requete.Parameters.AddWithValue("@identifiant", id);
             MySqlDataReader reader = requete.ExecuteReader();
             Conducteur conduct = new Conducteur();
             while (reader.Read())
             {
+                conduct._Id = (int)reader["id"];
                 conduct._Nom = reader["nom"].ToString();
                 conduct._Prenom = reader["prenom"].ToString();
                 conduct._Password =  (byte[])reader["motDePasse"];
                 conduct._Mail = reader["mail"].ToString();
                 conduct._Identifiant = reader["identifiant"].ToString();
             }
+            ConnexionSql.CloseConnexion();
+            return conduct;
+
+        }
+
+        public static Conducteur getConducteurById(long id)
+        {
+            MySqlCommand requete = new MySqlCommand();
+            requete.Connection = ConnexionSql.Instance._Cnx;
+            ConnexionSql.OpenConnexion();
+            requete.CommandText = "SELECT identifiant,nom, prenom, motDePasse, mail, identifiant FROM Conducteur WHERE id=@id;";
+            requete.Parameters.AddWithValue("@id", id);
+            MySqlDataReader reader = requete.ExecuteReader();
+            Conducteur conduct = new Conducteur();
+            while (reader.Read())
+            {
+                conduct._Id = id;
+                conduct._Nom = reader["nom"].ToString();
+                conduct._Prenom = reader["prenom"].ToString();
+                conduct._Password = (byte[])reader["motDePasse"];
+                conduct._Mail = reader["mail"].ToString();
+                conduct._Identifiant = reader["identifiant"].ToString();
+            }
+            reader.Close();
             ConnexionSql.CloseConnexion();
             return conduct;
 
