@@ -13,52 +13,78 @@ namespace RouleTitine
 {
     public partial class NouveauModele : Form
     {
+        // Liste permettant d'afficher plusieurs saisie d'entretien réguliers
         private List<TextBox> txtBoxesNomEntretien;
-        private List<ComboBox> cbUnite;
-        private List<NumericUpDown> numPeriodes;
+        private List<NumericUpDown> numPeriodesKm;
+        private List<NumericUpDown> numPeriodesMois;
+        private List<Label> lstLblKm;
+        private List<Label> lstLblMois;
+        private Button btnSupEntretien;
         private int nbEntretien;
         private Marque marque;
         public NouveauModele(Marque marque)
         {
             InitializeComponent();
+
+            //renseignement de la marque
             this.marque = marque;
             txtMarque.Text = marque._Nom;
+            
+            //instanciation des listes
             txtBoxesNomEntretien = new List<TextBox>();
-            cbUnite = new List<ComboBox>();
-            numPeriodes = new List<NumericUpDown>();
+            numPeriodesMois = new List<NumericUpDown>();
+            numPeriodesKm = new List<NumericUpDown>();
+            lstLblKm = new List<Label>();
+            lstLblMois = new List<Label>();
+
+            //ajout des composants exsistants aux listes
             txtBoxesNomEntretien.Add(this.txtNomEntretien);
-            cbUnite.Add(this.comboUnite);
-            numPeriodes.Add(this.txtPeriodicite);
+            numPeriodesKm.Add(this.txtPeriodiciteKm);
+            numPeriodesMois.Add(this.txtPeriodiciteMois);
+            lstLblKm.Add(this.lblKm);
+            lstLblMois.Add(this.lblMois);
             nbEntretien = 0;
-            this.comboUnite.Items.Add("--");
-            this.comboUnite.Items.Add("km");
-            this.comboUnite.Items.Add("mois");
-            this.comboUnite.SelectedIndex = 0;
 
         }
 
         private void btnNouvelEntretien_Click(object sender, EventArgs e)
         {
+            // création d'une nouvelle ligne pour saisir un entretien
             this.nbEntretien += 1;
+            this.panelEntretien.Controls.Remove(btnSupEntretien);
             TextBox txtEntretien = new TextBox();
             txtEntretien.Size = new System.Drawing.Size(100, 2);
             txtEntretien.Location = new System.Drawing.Point(this.txtNomEntretien.Location.X, this.txtNomEntretien.Location.Y+this.nbEntretien*26);
-            NumericUpDown numUpDown = new NumericUpDown();
-            numUpDown.Size = new System.Drawing.Size(62, 20);
-            numUpDown.Location = new System.Drawing.Point(this.txtPeriodicite.Location.X, this.txtPeriodicite.Location.Y + this.nbEntretien * 26);
-            ComboBox combo = new ComboBox();
-            combo.Location = new System.Drawing.Point(this.comboUnite.Location.X, this.comboUnite.Location.Y + this.nbEntretien * 26);
-            combo.Size = new System.Drawing.Size(121, 21);
-            combo.Items.Add("--");
-            combo.Items.Add("km");
-            combo.Items.Add("mois");
-            combo.SelectedIndex = 0;
+            NumericUpDown numUpDownKm = new NumericUpDown();
+            numUpDownKm.Size = new System.Drawing.Size(62, 20);
+            numUpDownKm.Location = new System.Drawing.Point(this.txtPeriodiciteKm.Location.X, this.txtPeriodiciteKm.Location.Y + this.nbEntretien * 26);
+            NumericUpDown numUpDownMois = new NumericUpDown();
+            numUpDownMois.Size = new System.Drawing.Size(62, 20);
+            numUpDownMois.Location = new System.Drawing.Point(this.txtPeriodiciteMois.Location.X, this.txtPeriodiciteMois.Location.Y + this.nbEntretien * 26);
+            Label labelKilometre = new Label();
+            labelKilometre.Text = "Km";
+            labelKilometre.Location = new System.Drawing.Point(this.lblKm.Location.X, this.lblKm.Location.Y + this.nbEntretien * 26);
+            Label labelMois = new Label();
+            labelMois.Text = "Mois";
+            labelMois.Location = new System.Drawing.Point(this.lblMois.Location.X, this.lblMois.Location.Y + this.nbEntretien * 26);
+            btnSupEntretien = new Button();
+            btnSupEntretien.Text = "-";
+            btnSupEntretien.Size = new System.Drawing.Size(28, 20); ;
+            btnSupEntretien.Location = new System.Drawing.Point(this.btnNouvelEntretien.Location.X, this.btnNouvelEntretien.Location.Y + this.nbEntretien * 26);
+            btnSupEntretien.Click += new System.EventHandler(this.btnSupEntretien_Click);
             this.panelEntretien.Controls.Add(txtEntretien);
-            this.panelEntretien.Controls.Add(numUpDown);
-            this.panelEntretien.Controls.Add(combo);
+            this.panelEntretien.Controls.Add(numUpDownKm);
+            this.panelEntretien.Controls.Add(numUpDownMois);
+            this.panelEntretien.Controls.Add(labelKilometre);
+            this.panelEntretien.Controls.Add(labelMois);
+            this.panelEntretien.Controls.Add(btnSupEntretien);
             this.txtBoxesNomEntretien.Add(txtEntretien);
-            this.cbUnite.Add(combo);
-            this.numPeriodes.Add(numUpDown);         
+            this.numPeriodesKm.Add(numUpDownKm);
+            this.numPeriodesMois.Add(numUpDownMois);
+            this.lstLblMois.Add(labelMois);
+            this.lstLblKm.Add(labelKilometre);
+
+                     
 
         }
 
@@ -132,38 +158,19 @@ namespace RouleTitine
         {
             EntretienRegulier entReg = new EntretienRegulier();
             bool ok = true;
-            if (this.cbUnite[i].SelectedItem.ToString().Equals("km"))
+            entReg._Kilometrage = (int)this.numPeriodesKm[i].Value;
+            entReg._Periode = (int)this.numPeriodesMois[i].Value;           
+            if (!this.txtBoxesNomEntretien[i].Text.Equals(""))
             {
-                entReg._Kilometrage = (int)this.numPeriodes[i].Value;
+                entReg._Nom = this.txtBoxesNomEntretien[i].Text;
+                long entEnr = DALEntretienRegulier.insert(entReg);
+                entReg._Id = entEnr;
             }
             else
             {
-                if (this.cbUnite[i].SelectedItem.ToString().Equals("mois"))
-                {
-                    entReg._Periode = (int)this.numPeriodes[i].Value;
-                }
-                else
-                {
-                    MessageBox.Show("Erreur lors de la saisie");
-                    this.cbUnite[i].Focus();
-                    ok = false;
-                }
-            }
-
-            if (ok)
-            {
-                if (!this.txtBoxesNomEntretien[i].Text.Equals(""))
-                {
-                    entReg._Nom = this.txtBoxesNomEntretien[i].Text;
-                    long entEnr = DALEntretienRegulier.insert(entReg);
-                    entReg._Id = entEnr;
-                }
-                else
-                {
-                    MessageBox.Show("Erreur lors de la saisie");
-                    this.txtBoxesNomEntretien[i].Focus();
-                }
-            }
+                MessageBox.Show("Erreur lors de la saisie");
+                this.txtBoxesNomEntretien[i].Focus();
+            }            
             return entReg;
         }
 
@@ -171,6 +178,34 @@ namespace RouleTitine
         {
             this.DialogResult = System.Windows.Forms.DialogResult.Ignore;
             this.Close();
+        }
+
+        private void btnSupEntretien_Click(object sender, EventArgs e)
+        {
+            nbEntretien -= 1;
+            // on récupère les éléments àsupprimer dans la liste
+            TextBox entretien = this.txtBoxesNomEntretien.Last();
+            NumericUpDown numKm = this.numPeriodesKm.Last();
+            NumericUpDown numMois = this.numPeriodesMois.Last();
+            Label km = this.lstLblKm.Last();
+            Label mois = this.lstLblMois.Last();
+
+            // on supprime les éléments de la fenêtre
+            this.panelEntretien.Controls.Remove(entretien);
+            this.panelEntretien.Controls.Remove(numKm);
+            this.panelEntretien.Controls.Remove(numMois);
+            this.panelEntretien.Controls.Remove(km);
+            this.panelEntretien.Controls.Remove(mois);
+
+            //On déplace le bouton sur le nouveau dernier élément
+            this.panelEntretien.Controls.Remove(btnSupEntretien);
+            btnSupEntretien = new Button();
+            btnSupEntretien.Text = "-";
+            btnSupEntretien.Size = new System.Drawing.Size(28, 20);
+            btnSupEntretien.Location = new System.Drawing.Point(this.btnNouvelEntretien.Location.X, this.btnNouvelEntretien.Location.Y + this.nbEntretien * 26);
+            btnSupEntretien.Click += new System.EventHandler(this.btnSupEntretien_Click);
+            this.panelEntretien.Controls.Add(btnSupEntretien);
+
         }
     }
 }

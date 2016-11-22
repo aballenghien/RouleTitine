@@ -38,19 +38,21 @@
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ajouterUneVoitureToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblCarb = new System.Windows.Forms.Label();
+            this.valueModele = new System.Windows.Forms.Label();
+            this.lblModele = new System.Windows.Forms.Label();
+            this.valueDtVente = new System.Windows.Forms.Label();
+            this.lblDtVente = new System.Windows.Forms.Label();
+            this.valueDtAchat = new System.Windows.Forms.Label();
+            this.lblDtAchat = new System.Windows.Forms.Label();
+            this.valueDtMiseCircu = new System.Windows.Forms.Label();
+            this.lblDtMiseCircu = new System.Windows.Forms.Label();
+            this.valueKm = new System.Windows.Forms.Label();
+            this.lblKm = new System.Windows.Forms.Label();
             this.lblImmat = new System.Windows.Forms.Label();
             this.valueImmat = new System.Windows.Forms.Label();
-            this.lblKm = new System.Windows.Forms.Label();
-            this.valueKm = new System.Windows.Forms.Label();
-            this.lblDtMiseCircu = new System.Windows.Forms.Label();
-            this.valueDtMiseCircu = new System.Windows.Forms.Label();
-            this.lblDtAchat = new System.Windows.Forms.Label();
-            this.valueDtAchat = new System.Windows.Forms.Label();
-            this.lblDtVente = new System.Windows.Forms.Label();
-            this.valueDtVente = new System.Windows.Forms.Label();
-            this.lblModele = new System.Windows.Forms.Label();
-            this.valueModele = new System.Windows.Forms.Label();
-            this.lblCarb = new System.Windows.Forms.Label();
+            this.btnVoitSuiv = new System.Windows.Forms.Button();
+            this.btnVoitPrec = new System.Windows.Forms.Button();
             this.valueCarb = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imgVoiture)).BeginInit();
             this.barreEtatVoiture.SuspendLayout();
@@ -167,6 +169,138 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(201, 315);
             this.tableLayoutPanel1.TabIndex = 8;
             // 
+            // lblCarb
+            // 
+            this.lblCarb.AutoSize = true;
+            this.lblCarb.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblCarb.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCarb.Location = new System.Drawing.Point(4, 265);
+            this.lblCarb.Name = "lblCarb";
+            this.lblCarb.Size = new System.Drawing.Size(93, 49);
+            this.lblCarb.TabIndex = 12;
+            this.lblCarb.Text = "Carburant";
+            this.lblCarb.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // valueModele
+            // 
+            this.valueModele.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.valueModele.AutoSize = true;
+            this.valueModele.Location = new System.Drawing.Point(104, 221);
+            this.valueModele.Name = "valueModele";
+            this.valueModele.Size = new System.Drawing.Size(93, 43);
+            this.valueModele.TabIndex = 11;
+            this.valueModele.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblModele
+            // 
+            this.lblModele.AutoSize = true;
+            this.lblModele.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblModele.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblModele.Location = new System.Drawing.Point(4, 221);
+            this.lblModele.Name = "lblModele";
+            this.lblModele.Size = new System.Drawing.Size(93, 43);
+            this.lblModele.TabIndex = 10;
+            this.lblModele.Text = "Modèle";
+            this.lblModele.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // valueDtVente
+            // 
+            this.valueDtVente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.valueDtVente.AutoSize = true;
+            this.valueDtVente.Location = new System.Drawing.Point(104, 177);
+            this.valueDtVente.Name = "valueDtVente";
+            this.valueDtVente.Size = new System.Drawing.Size(93, 43);
+            this.valueDtVente.TabIndex = 9;
+            this.valueDtVente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblDtVente
+            // 
+            this.lblDtVente.AutoSize = true;
+            this.lblDtVente.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblDtVente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDtVente.Location = new System.Drawing.Point(4, 177);
+            this.lblDtVente.Name = "lblDtVente";
+            this.lblDtVente.Size = new System.Drawing.Size(93, 43);
+            this.lblDtVente.TabIndex = 8;
+            this.lblDtVente.Text = "Date de vente";
+            this.lblDtVente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // valueDtAchat
+            // 
+            this.valueDtAchat.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.valueDtAchat.AutoSize = true;
+            this.valueDtAchat.Location = new System.Drawing.Point(104, 133);
+            this.valueDtAchat.Name = "valueDtAchat";
+            this.valueDtAchat.Size = new System.Drawing.Size(93, 43);
+            this.valueDtAchat.TabIndex = 7;
+            this.valueDtAchat.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblDtAchat
+            // 
+            this.lblDtAchat.AutoSize = true;
+            this.lblDtAchat.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblDtAchat.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDtAchat.Location = new System.Drawing.Point(4, 133);
+            this.lblDtAchat.Name = "lblDtAchat";
+            this.lblDtAchat.Size = new System.Drawing.Size(93, 43);
+            this.lblDtAchat.TabIndex = 6;
+            this.lblDtAchat.Text = "Date d\'achat";
+            this.lblDtAchat.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // valueDtMiseCircu
+            // 
+            this.valueDtMiseCircu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.valueDtMiseCircu.AutoSize = true;
+            this.valueDtMiseCircu.Location = new System.Drawing.Point(104, 89);
+            this.valueDtMiseCircu.Name = "valueDtMiseCircu";
+            this.valueDtMiseCircu.Size = new System.Drawing.Size(93, 43);
+            this.valueDtMiseCircu.TabIndex = 5;
+            this.valueDtMiseCircu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblDtMiseCircu
+            // 
+            this.lblDtMiseCircu.AutoSize = true;
+            this.lblDtMiseCircu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblDtMiseCircu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDtMiseCircu.Location = new System.Drawing.Point(4, 89);
+            this.lblDtMiseCircu.Name = "lblDtMiseCircu";
+            this.lblDtMiseCircu.Size = new System.Drawing.Size(93, 43);
+            this.lblDtMiseCircu.TabIndex = 4;
+            this.lblDtMiseCircu.Text = "Date de mise en circulation";
+            this.lblDtMiseCircu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // valueKm
+            // 
+            this.valueKm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.valueKm.AutoSize = true;
+            this.valueKm.Location = new System.Drawing.Point(104, 45);
+            this.valueKm.Name = "valueKm";
+            this.valueKm.Size = new System.Drawing.Size(93, 43);
+            this.valueKm.TabIndex = 3;
+            this.valueKm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblKm
+            // 
+            this.lblKm.AutoSize = true;
+            this.lblKm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblKm.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblKm.Location = new System.Drawing.Point(4, 45);
+            this.lblKm.Name = "lblKm";
+            this.lblKm.Size = new System.Drawing.Size(93, 43);
+            this.lblKm.TabIndex = 2;
+            this.lblKm.Text = "Kilométrage";
+            this.lblKm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // lblImmat
             // 
             this.lblImmat.AutoSize = true;
@@ -189,145 +323,27 @@
             this.valueImmat.Name = "valueImmat";
             this.valueImmat.Size = new System.Drawing.Size(93, 43);
             this.valueImmat.TabIndex = 1;
-            this.valueImmat.Text = "label1";
             this.valueImmat.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblKm
+            // btnVoitSuiv
             // 
-            this.lblKm.AutoSize = true;
-            this.lblKm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblKm.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblKm.Location = new System.Drawing.Point(4, 45);
-            this.lblKm.Name = "lblKm";
-            this.lblKm.Size = new System.Drawing.Size(93, 43);
-            this.lblKm.TabIndex = 2;
-            this.lblKm.Text = "Kilométrage";
-            this.lblKm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnVoitSuiv.Location = new System.Drawing.Point(603, 490);
+            this.btnVoitSuiv.Name = "btnVoitSuiv";
+            this.btnVoitSuiv.Size = new System.Drawing.Size(28, 23);
+            this.btnVoitSuiv.TabIndex = 9;
+            this.btnVoitSuiv.Text = ">";
+            this.btnVoitSuiv.UseVisualStyleBackColor = true;
+            this.btnVoitSuiv.Click += new System.EventHandler(this.btnVoitSuiv_Click);
             // 
-            // valueKm
+            // btnVoitPrec
             // 
-            this.valueKm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.valueKm.AutoSize = true;
-            this.valueKm.Location = new System.Drawing.Point(104, 45);
-            this.valueKm.Name = "valueKm";
-            this.valueKm.Size = new System.Drawing.Size(93, 43);
-            this.valueKm.TabIndex = 3;
-            this.valueKm.Text = "label1";
-            this.valueKm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblDtMiseCircu
-            // 
-            this.lblDtMiseCircu.AutoSize = true;
-            this.lblDtMiseCircu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDtMiseCircu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDtMiseCircu.Location = new System.Drawing.Point(4, 89);
-            this.lblDtMiseCircu.Name = "lblDtMiseCircu";
-            this.lblDtMiseCircu.Size = new System.Drawing.Size(93, 43);
-            this.lblDtMiseCircu.TabIndex = 4;
-            this.lblDtMiseCircu.Text = "Date de mise en circulation";
-            this.lblDtMiseCircu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // valueDtMiseCircu
-            // 
-            this.valueDtMiseCircu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.valueDtMiseCircu.AutoSize = true;
-            this.valueDtMiseCircu.Location = new System.Drawing.Point(104, 89);
-            this.valueDtMiseCircu.Name = "valueDtMiseCircu";
-            this.valueDtMiseCircu.Size = new System.Drawing.Size(93, 43);
-            this.valueDtMiseCircu.TabIndex = 5;
-            this.valueDtMiseCircu.Text = "label1";
-            this.valueDtMiseCircu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblDtAchat
-            // 
-            this.lblDtAchat.AutoSize = true;
-            this.lblDtAchat.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDtAchat.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDtAchat.Location = new System.Drawing.Point(4, 133);
-            this.lblDtAchat.Name = "lblDtAchat";
-            this.lblDtAchat.Size = new System.Drawing.Size(93, 43);
-            this.lblDtAchat.TabIndex = 6;
-            this.lblDtAchat.Text = "Date d\'achat";
-            this.lblDtAchat.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // valueDtAchat
-            // 
-            this.valueDtAchat.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.valueDtAchat.AutoSize = true;
-            this.valueDtAchat.Location = new System.Drawing.Point(104, 133);
-            this.valueDtAchat.Name = "valueDtAchat";
-            this.valueDtAchat.Size = new System.Drawing.Size(93, 43);
-            this.valueDtAchat.TabIndex = 7;
-            this.valueDtAchat.Text = "label1";
-            this.valueDtAchat.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblDtVente
-            // 
-            this.lblDtVente.AutoSize = true;
-            this.lblDtVente.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDtVente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDtVente.Location = new System.Drawing.Point(4, 177);
-            this.lblDtVente.Name = "lblDtVente";
-            this.lblDtVente.Size = new System.Drawing.Size(93, 43);
-            this.lblDtVente.TabIndex = 8;
-            this.lblDtVente.Text = "Date de vente";
-            this.lblDtVente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // valueDtVente
-            // 
-            this.valueDtVente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.valueDtVente.AutoSize = true;
-            this.valueDtVente.Location = new System.Drawing.Point(104, 177);
-            this.valueDtVente.Name = "valueDtVente";
-            this.valueDtVente.Size = new System.Drawing.Size(93, 43);
-            this.valueDtVente.TabIndex = 9;
-            this.valueDtVente.Text = "label1";
-            this.valueDtVente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblModele
-            // 
-            this.lblModele.AutoSize = true;
-            this.lblModele.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblModele.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblModele.Location = new System.Drawing.Point(4, 221);
-            this.lblModele.Name = "lblModele";
-            this.lblModele.Size = new System.Drawing.Size(93, 43);
-            this.lblModele.TabIndex = 10;
-            this.lblModele.Text = "Modèle";
-            this.lblModele.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // valueModele
-            // 
-            this.valueModele.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.valueModele.AutoSize = true;
-            this.valueModele.Location = new System.Drawing.Point(104, 221);
-            this.valueModele.Name = "valueModele";
-            this.valueModele.Size = new System.Drawing.Size(93, 43);
-            this.valueModele.TabIndex = 11;
-            this.valueModele.Text = "label1";
-            this.valueModele.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblCarb
-            // 
-            this.lblCarb.AutoSize = true;
-            this.lblCarb.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblCarb.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCarb.Location = new System.Drawing.Point(4, 265);
-            this.lblCarb.Name = "lblCarb";
-            this.lblCarb.Size = new System.Drawing.Size(93, 49);
-            this.lblCarb.TabIndex = 12;
-            this.lblCarb.Text = "Carburant";
-            this.lblCarb.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnVoitPrec.Location = new System.Drawing.Point(430, 490);
+            this.btnVoitPrec.Name = "btnVoitPrec";
+            this.btnVoitPrec.Size = new System.Drawing.Size(28, 23);
+            this.btnVoitPrec.TabIndex = 10;
+            this.btnVoitPrec.Text = "<";
+            this.btnVoitPrec.UseVisualStyleBackColor = true;
+            this.btnVoitPrec.Click += new System.EventHandler(this.btnVoitPrec_Click);
             // 
             // valueCarb
             // 
@@ -339,7 +355,6 @@
             this.valueCarb.Name = "valueCarb";
             this.valueCarb.Size = new System.Drawing.Size(93, 49);
             this.valueCarb.TabIndex = 13;
-            this.valueCarb.Text = "label1";
             this.valueCarb.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MenuVoiture
@@ -347,6 +362,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(643, 520);
+            this.Controls.Add(this.btnVoitPrec);
+            this.Controls.Add(this.btnVoitSuiv);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.btnAssurance);
             this.Controls.Add(this.btnOperation);
@@ -393,6 +410,8 @@
         private System.Windows.Forms.Label lblDtMiseCircu;
         private System.Windows.Forms.Label lblCarb;
         private System.Windows.Forms.Label valueModele;
+        private System.Windows.Forms.Button btnVoitSuiv;
+        private System.Windows.Forms.Button btnVoitPrec;
         private System.Windows.Forms.Label valueCarb;
 
     }

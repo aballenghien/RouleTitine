@@ -16,6 +16,7 @@ namespace RouleTitine
     {
         private Conducteur conductConnecte;
         private List<Voiture> lstVoiture;
+        private int numVoitAffiche;
         public MenuVoiture(Conducteur c)
         {
             InitializeComponent();
@@ -24,7 +25,8 @@ namespace RouleTitine
             this.lstVoiture = DALVoiture.getVoituresByConducteur(this.conductConnecte);
             if (this.lstVoiture.Count > 0)
             {
-                this.afficherVoiture(this.lstVoiture[0]);
+                numVoitAffiche = 0;
+                this.afficherVoiture(this.lstVoiture[numVoitAffiche]);
             }
         }
 
@@ -37,7 +39,8 @@ namespace RouleTitine
             if (dialog == System.Windows.Forms.DialogResult.OK)
             {
                 this.lstVoiture = DALVoiture.getVoituresByConducteur(this.conductConnecte);
-                this.afficherVoiture(this.lstVoiture[this.lstVoiture.Count-1]);
+                numVoitAffiche = this.lstVoiture.Count - 1;
+                this.afficherVoiture(this.lstVoiture[numVoitAffiche]);
             }
 
            
@@ -45,7 +48,14 @@ namespace RouleTitine
 
         private void afficherVoiture(Voiture voit)
         {
-            this.imgVoiture.Image = Program.byteArrayToImage(voit._Image);
+            if (voit._Image.Length > 1)
+            {
+                this.imgVoiture.Image = Program.byteArrayToImage(voit._Image);
+            }
+            else
+            {
+                this.imgVoiture.Image = null;
+            }
             this.valueImmat.Text = voit._Immatriculation.ToString();
             this.valueKm.Text = voit._Kilometrage.ToString();
             this.valueDtAchat.Text = voit._DateAchat.ToShortDateString();
@@ -53,6 +63,32 @@ namespace RouleTitine
             this.valueDtVente.Text = voit._DateVente.ToShortDateString();
             this.valueModele.Text = voit._Modele._Marque._Nom + " " + voit._Modele._Nom;
             this.valueCarb.Text = voit._Carburant._Nom;
+        }
+
+        private void btnVoitPrec_Click(object sender, EventArgs e)
+        {
+            numVoitAffiche -= 1;
+            if (numVoitAffiche >= 0)
+            {
+                this.afficherVoiture(this.lstVoiture[numVoitAffiche]);
+            }
+            else
+            {
+                numVoitAffiche = 0;
+            }
+        }
+
+        private void btnVoitSuiv_Click(object sender, EventArgs e)
+        {
+            numVoitAffiche += 1;
+            if (numVoitAffiche < this.lstVoiture.Count)
+            {
+                this.afficherVoiture(this.lstVoiture[numVoitAffiche]);
+            }
+            else
+            {
+                numVoitAffiche = this.lstVoiture.Count - 1;
+            }
         }
     }
 }

@@ -32,10 +32,8 @@
             this.lblEntretien = new System.Windows.Forms.Label();
             this.lblNomEntretien = new System.Windows.Forms.Label();
             this.lblPeriode = new System.Windows.Forms.Label();
-            this.lblUnite = new System.Windows.Forms.Label();
             this.txtNomEntretien = new System.Windows.Forms.TextBox();
-            this.txtPeriodicite = new System.Windows.Forms.NumericUpDown();
-            this.comboUnite = new System.Windows.Forms.ComboBox();
+            this.txtPeriodiciteKm = new System.Windows.Forms.NumericUpDown();
             this.btnNouvelEntretien = new System.Windows.Forms.Button();
             this.lblModele = new System.Windows.Forms.Label();
             this.txtModele = new System.Windows.Forms.TextBox();
@@ -43,8 +41,12 @@
             this.btnAnnuler = new System.Windows.Forms.Button();
             this.txtMarque = new System.Windows.Forms.TextBox();
             this.panelEntretien = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPeriodicite)).BeginInit();
+            this.lblMois = new System.Windows.Forms.Label();
+            this.lblKm = new System.Windows.Forms.Label();
+            this.txtPeriodiciteMois = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPeriodiciteKm)).BeginInit();
             this.panelEntretien.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPeriodiciteMois)).BeginInit();
             this.SuspendLayout();
             // 
             // lblMarque
@@ -83,15 +85,6 @@
             this.lblPeriode.TabIndex = 4;
             this.lblPeriode.Text = "Périodicité : ";
             // 
-            // lblUnite
-            // 
-            this.lblUnite.AutoSize = true;
-            this.lblUnite.Location = new System.Drawing.Point(195, 131);
-            this.lblUnite.Name = "lblUnite";
-            this.lblUnite.Size = new System.Drawing.Size(56, 13);
-            this.lblUnite.TabIndex = 5;
-            this.lblUnite.Text = "km/mois : ";
-            // 
             // txtNomEntretien
             // 
             this.txtNomEntretien.Location = new System.Drawing.Point(3, 3);
@@ -99,26 +92,23 @@
             this.txtNomEntretien.Size = new System.Drawing.Size(100, 20);
             this.txtNomEntretien.TabIndex = 6;
             // 
-            // txtPeriodicite
+            // txtPeriodiciteKm
             // 
-            this.txtPeriodicite.Location = new System.Drawing.Point(109, 3);
-            this.txtPeriodicite.Name = "txtPeriodicite";
-            this.txtPeriodicite.Size = new System.Drawing.Size(62, 20);
-            this.txtPeriodicite.TabIndex = 7;
-            // 
-            // comboUnite
-            // 
-            this.comboUnite.FormattingEnabled = true;
-            this.comboUnite.Location = new System.Drawing.Point(177, 3);
-            this.comboUnite.Name = "comboUnite";
-            this.comboUnite.Size = new System.Drawing.Size(121, 21);
-            this.comboUnite.TabIndex = 8;
+            this.txtPeriodiciteKm.Location = new System.Drawing.Point(109, 3);
+            this.txtPeriodiciteKm.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.txtPeriodiciteKm.Name = "txtPeriodiciteKm";
+            this.txtPeriodiciteKm.Size = new System.Drawing.Size(62, 20);
+            this.txtPeriodiciteKm.TabIndex = 7;
             // 
             // btnNouvelEntretien
             // 
-            this.btnNouvelEntretien.Location = new System.Drawing.Point(304, 3);
+            this.btnNouvelEntretien.Location = new System.Drawing.Point(319, 4);
             this.btnNouvelEntretien.Name = "btnNouvelEntretien";
-            this.btnNouvelEntretien.Size = new System.Drawing.Size(28, 23);
+            this.btnNouvelEntretien.Size = new System.Drawing.Size(28, 20);
             this.btnNouvelEntretien.TabIndex = 9;
             this.btnNouvelEntretien.Text = "+";
             this.btnNouvelEntretien.UseVisualStyleBackColor = true;
@@ -176,14 +166,41 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelEntretien.AutoScroll = true;
-            this.panelEntretien.Controls.Add(this.comboUnite);
+            this.panelEntretien.Controls.Add(this.lblMois);
+            this.panelEntretien.Controls.Add(this.lblKm);
+            this.panelEntretien.Controls.Add(this.txtPeriodiciteMois);
             this.panelEntretien.Controls.Add(this.txtNomEntretien);
             this.panelEntretien.Controls.Add(this.btnNouvelEntretien);
-            this.panelEntretien.Controls.Add(this.txtPeriodicite);
+            this.panelEntretien.Controls.Add(this.txtPeriodiciteKm);
             this.panelEntretien.Location = new System.Drawing.Point(21, 147);
             this.panelEntretien.Name = "panelEntretien";
             this.panelEntretien.Size = new System.Drawing.Size(350, 126);
             this.panelEntretien.TabIndex = 16;
+            // 
+            // lblMois
+            // 
+            this.lblMois.AutoSize = true;
+            this.lblMois.Location = new System.Drawing.Point(280, 4);
+            this.lblMois.Name = "lblMois";
+            this.lblMois.Size = new System.Drawing.Size(28, 13);
+            this.lblMois.TabIndex = 12;
+            this.lblMois.Text = "mois";
+            // 
+            // lblKm
+            // 
+            this.lblKm.AutoSize = true;
+            this.lblKm.Location = new System.Drawing.Point(178, 4);
+            this.lblKm.Name = "lblKm";
+            this.lblKm.Size = new System.Drawing.Size(22, 13);
+            this.lblKm.TabIndex = 11;
+            this.lblKm.Text = "Km";
+            // 
+            // txtPeriodiciteMois
+            // 
+            this.txtPeriodiciteMois.Location = new System.Drawing.Point(211, 3);
+            this.txtPeriodiciteMois.Name = "txtPeriodiciteMois";
+            this.txtPeriodiciteMois.Size = new System.Drawing.Size(62, 20);
+            this.txtPeriodiciteMois.TabIndex = 10;
             // 
             // NouveauModele
             // 
@@ -196,7 +213,6 @@
             this.Controls.Add(this.btnEnregistrerModele);
             this.Controls.Add(this.txtModele);
             this.Controls.Add(this.lblModele);
-            this.Controls.Add(this.lblUnite);
             this.Controls.Add(this.lblPeriode);
             this.Controls.Add(this.lblNomEntretien);
             this.Controls.Add(this.lblEntretien);
@@ -205,9 +221,10 @@
             this.MinimumSize = new System.Drawing.Size(416, 353);
             this.Name = "NouveauModele";
             this.Text = "NouveauModele";
-            ((System.ComponentModel.ISupportInitialize)(this.txtPeriodicite)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPeriodiciteKm)).EndInit();
             this.panelEntretien.ResumeLayout(false);
             this.panelEntretien.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPeriodiciteMois)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -219,10 +236,8 @@
         private System.Windows.Forms.Label lblEntretien;
         private System.Windows.Forms.Label lblNomEntretien;
         private System.Windows.Forms.Label lblPeriode;
-        private System.Windows.Forms.Label lblUnite;
         private System.Windows.Forms.TextBox txtNomEntretien;
-        private System.Windows.Forms.NumericUpDown txtPeriodicite;
-        private System.Windows.Forms.ComboBox comboUnite;
+        private System.Windows.Forms.NumericUpDown txtPeriodiciteKm;
         private System.Windows.Forms.Button btnNouvelEntretien;
         private System.Windows.Forms.Label lblModele;
         private System.Windows.Forms.TextBox txtModele;
@@ -230,5 +245,8 @@
         private System.Windows.Forms.Button btnAnnuler;
         private System.Windows.Forms.TextBox txtMarque;
         private System.Windows.Forms.Panel panelEntretien;
+        private System.Windows.Forms.NumericUpDown txtPeriodiciteMois;
+        private System.Windows.Forms.Label lblMois;
+        private System.Windows.Forms.Label lblKm;
     }
 }

@@ -36,6 +36,7 @@ namespace RouleTitine
                 this.lstModele.Enabled = true;
                 Marque marq = (Marque)this.lstMarque.SelectedItem;
                 List<Modele> lstMod = DALModele.getModelesByMarque(marq);
+                this.lstModele.Items.Clear();
                 this.lstModele.Items.Add("--");
                 this.lstModele.Items.Add("Ajouter un modèle");
                 this.lstModele.Items.AddRange(lstMod.ToArray());
@@ -139,27 +140,72 @@ namespace RouleTitine
         private void btnEnrVoiture_Click(object sender, EventArgs e)
         {
             Voiture uneVoit = new Voiture();
-            uneVoit._Carburant = (Carburant)this.lstCarburant.SelectedItem;
-            uneVoit._Conducteur = this.conduct;
-            uneVoit._DateAchat = this.dtPickDateAchat.Value;
-            uneVoit._DateMiseEnCirculation = this.dtPickDateMiseEnCircu.Value;            
-            uneVoit._Image = Program.imageToByteArray(this.imgNouvelleVoiture.Image);
-            uneVoit._Immatriculation = this.txtImmatriculation.Text;
-            uneVoit._Kilometrage = Convert.ToInt32(this.txtKilometrage.Text);
-            uneVoit._Modele = (Modele) this.lstModele.SelectedItem;
-            uneVoit._VolumeReservoir = Convert.ToInt32(this.txtVolReserv.Text, 10);
-            bool voitInsere = DALVoiture.insert(uneVoit);
-            if (voitInsere)
+            if(this.txtKilometrage.Text.Equals("") && (this.dtPickDateAchat.Value.CompareTo(this.dtPickDateMiseEnCircu.Value)==0))
             {
-                MessageBox.Show("Enregistrement effectué");
-                this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                this.txtKilometrage.Text="0";
             }
-            else
+
+            int enrOK = this.controleSaisieVoiture();
+            bool voitInsere = false;
+            switch (enrOK)
             {
-                MessageBox.Show("Erreur lors de l'enregistrement");
-                this.DialogResult = System.Windows.Forms.DialogResult.Abort;
+                case 0:
+                    this.lblErreur.Text = "";
+                    uneVoit._Carburant = (Carburant)this.lstCarburant.SelectedItem;
+                    uneVoit._Conducteur = this.conduct;
+                    uneVoit._DateAchat = this.dtPickDateAchat.Value;
+                    uneVoit._DateMiseEnCirculation = this.dtPickDateMiseEnCircu.Value;
+                    if (this.imgNouvelleVoiture != null && this.imgNouvelleVoiture.Image != null)
+                    {
+                        uneVoit._Image = Program.imageToByteArray(this.imgNouvelleVoiture.Image);
+                    }
+                    else
+                    {
+                        uneVoit._Image = new byte[1];
+                    }
+                    uneVoit._Immatriculation = this.txtImmatriculation.Text;
+                    uneVoit._Kilometrage = Convert.ToInt32(this.txtKilometrage.Text);
+                    uneVoit._Modele = (Modele)this.lstModele.SelectedItem;
+                    uneVoit._VolumeReservoir = Convert.ToInt32(this.txtVolReserv.Text, 10);
+                    voitInsere = DALVoiture.insert(uneVoit);
+                    if (voitInsere)
+                    {
+                        MessageBox.Show("Enregistrement effectué");
+                        this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erreur lors de l'enregistrement");
+                        this.DialogResult = System.Windows.Forms.DialogResult.Abort;
+                    }
+                    this.Close();
+                    break;
+                case 1:
+                    this.lblErreur.Text = "Veuillez indiquer le numéro d'immatriculation de la voiture";
+                    break;
+                case 2:
+                    this.lblErreur.Text = "Veuillez indiquer le kilométrage de la voiture";
+                    break;
+                case 3:
+                    this.lblErreur.Text = "Erreur dans la saisie des dates";
+                    break;
+                case 4:
+                    this.lblErreur.Text = "Veuillez indiquer le carburant de la voiture";
+                    break;
+                case 5:
+                    this.lblErreur.Text = "Veuillez indiquer le volume du réservoir de la voiture";
+                    break;
+                case 6:
+                    this.lblErreur.Text = "Veuillez indiquer le modèle de la voiture";
+                    break;
             }
-            this.Close();
+            
+
+           
+          
+            
+           
+            
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)
@@ -170,7 +216,7 @@ namespace RouleTitine
 
         private void txtImmatriculation_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
-            this.toolTipImmat.ToolTipTitle = "Immatricultation incorrect";
+            this.toolTipImmat.ToolTipTitle = "Immatriculation incorrect";
             toolTipImmat.Show("Erreur dans le format de l'immatriculation", txtImmatriculation, txtImmatriculation.Location, 5000);
         }
 
@@ -186,6 +232,45 @@ namespace RouleTitine
             this.toolTipVolReserv.ToolTipTitle = "Erreur saisie";
             toolTipVolReserv.Show("Ne doit contenir que des chiffres", txtVolReserv, txtVolReserv.Location, 5000);
 
+        }
+
+        private int controleSaisieVoiture()
+        {
+            int controle = 0;
+            if (controle == 0 && this.txtImmatriculation.Text.Equals("  -   -"))
+            {
+                controle = 1;
+            }
+            if (controle == 0 && this.txtKilometrage.Text.Equals(""))
+            {
+                controle = 2;
+            }
+            if (controle == 0 && ((this.dtPickDateAchat.Value.CompareTo(DateTime.MinValue) < 0) ||
+                (this.dtPickDateMiseEnCircu.Value.CompareTo(DateTime.MinValue) < 0) ||
+                (this.dtPickDateAchat.Value.Date.CompareTo(this.dtPickDateMiseEnCircu.Value.Date) < 0)||
+                this.dtPickDateMiseEnCircu.Value.CompareTo(DateTime.Now)>0||
+                this.dtPickDateAchat.Value.CompareTo(DateTime.Now)>0))
+            {
+                controle = 3;
+            }
+            if (controle==0 && ((this.lstCarburant.SelectedItem.ToString().Equals("--")) ||
+               (this.lstCarburant.SelectedItem.ToString().Equals("Ajouter un carburant"))))
+            {
+                controle = 4;
+            }
+            if (controle == 0 && this.txtVolReserv.Text.Equals(""))
+            {
+                controle = 5;
+            }   
+            if (controle == 0 &&
+                ((this.lstMarque.SelectedItem.ToString().Equals("--"))||
+                (this.lstModele.SelectedItem.ToString().Equals("Ajouter un modèle")) ||
+                (this.lstModele.SelectedItem.ToString().Equals("--"))))
+            {
+                controle = 6;
+            }
+            
+            return controle;
         }
     }
 }
