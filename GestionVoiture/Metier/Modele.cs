@@ -10,6 +10,7 @@ namespace GestionVoiture
         private long id;
         private string nom;
         private Marque marque;
+        private List<EntretienRegulier> lstEntretiens;
 
         public long _Id
         {
@@ -43,6 +44,18 @@ namespace GestionVoiture
             set
             {
                 this.nom = value;
+            }
+        }
+
+        public List<EntretienRegulier> _LstEntretiens
+        {
+            get
+            {
+                return this.lstEntretiens;
+            }
+            set
+            {
+                this.lstEntretiens = value;
             }
         }
 

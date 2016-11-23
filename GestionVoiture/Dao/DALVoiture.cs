@@ -98,17 +98,76 @@ namespace GestionVoiture
                 v._Carburant = car;
                 v._Modele = new Modele();
                 v._Modele._Id = (int)reader["modele"];
-                v._Conducteur = new Conducteur();
                 v._Conducteur._Id = (int)reader["conducteur"];
                 lstVoiture.Add(v);
             }
             reader.Close();
             foreach(Voiture elem in lstVoiture){
-                elem._Conducteur = DALConducteur.getConducteurById(elem._Conducteur._Id);
                 elem._Modele = DALModele.getModeleById(elem._Modele._Id);
+                elem._Conducteur = DALConducteur.getConducteurById(elem._Conducteur._Id);
             }
             ConnexionSql.CloseConnexion();
             return lstVoiture;
+
+        }
+
+        public static bool updateDateVente(Voiture voit)
+        {
+            MySqlCommand requete = new MySqlCommand();
+            requete.Connection = ConnexionSql.Instance._Cnx;
+            ConnexionSql.OpenConnexion();
+            requete.CommandText = "UPDATE voiture SET dateVente = @datevente WHERE immatriculation = @immat";
+            requete.Parameters.AddWithValue("@datevente", voit._DateVente);
+            requete.Parameters.AddWithValue("@immat", voit._Immatriculation);
+            int nbEnregistrementsAffectes = requete.ExecuteNonQuery();
+            ConnexionSql.CloseConnexion();
+            if (nbEnregistrementsAffectes > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static Voiture getVoitureByImmatriculation(string immat)
+        {
+            MySqlCommand requete = new MySqlCommand();
+            requete.Connection = ConnexionSql.Instance._Cnx;
+            ConnexionSql.OpenConnexion();
+            requete.CommandText = "SELECT immatriculation, image, dateAchat, dateMiseEnCirculation, dateVente, kilometrage,"
+            + "volumeReservoir, carburant, modele, conducteur FROM Voiture"
+            + " WHERE immatriculation = @immat";
+            requete.Parameters.AddWithValue("@immat", immat);
+            MySqlDataReader reader = requete.ExecuteReader();
+            Voiture v = new Voiture();
+            while (reader.Read())
+            {
+                v._Immatriculation = reader["immatriculation"].ToString();
+                v._Image = (byte[])reader["image"];
+                v._Conducteur._Id = (int)reader["conducteur"];
+                v._DateAchat = (DateTime)reader["dateAchat"];
+                v._DateMiseEnCirculation = (DateTime)reader["dateMiseEnCirculation"];
+                if (!(reader["dateVente"]).Equals(System.DBNull.Value))
+                {
+                    v._DateVente = (DateTime)reader["dateVente"];
+                }
+                v._Kilometrage = (int)reader["kilometrage"];
+                v._VolumeReservoir = (int)reader["volumeReservoir"];
+                Carburant car = new Carburant();
+                car._Nom = reader["carburant"].ToString();
+                v._Carburant = car;
+                v._Modele = new Modele();
+                v._Modele._Id = (int)reader["modele"];
+                v._Conducteur = new Conducteur();
+                v._Conducteur._Id = (int)reader["conducteur"];
+            }
+            reader.Close();            
+            v._Conducteur = DALConducteur.getConducteurById(v._Conducteur._Id);
+            v._Modele = DALModele.getModeleById(v._Modele._Id);
+            ConnexionSql.CloseConnexion();
+            return v;
 
         }
 

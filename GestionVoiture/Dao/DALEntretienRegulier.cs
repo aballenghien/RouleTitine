@@ -76,7 +76,7 @@ namespace GestionVoiture
             {
                 ent._Id = (int)reader["id"];
                 ent._Nom = reader["nom"].ToString();
-                ent._Kilometrage = (double)reader["kilometrage"];
+                ent._Kilometrage = (int)reader["kilometrage"];
                 ent._Periode = (int)reader["nombreMois"];
             }
             reader.Close();

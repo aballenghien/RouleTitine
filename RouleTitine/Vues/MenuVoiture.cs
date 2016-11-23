@@ -39,7 +39,7 @@ namespace RouleTitine
             if (dialog == System.Windows.Forms.DialogResult.OK)
             {
                 this.lstVoiture = DALVoiture.getVoituresByConducteur(this.conductConnecte);
-                numVoitAffiche = this.lstVoiture.Count - 1;
+                numVoitAffiche = 0;
                 this.afficherVoiture(this.lstVoiture[numVoitAffiche]);
             }
 
@@ -63,6 +63,18 @@ namespace RouleTitine
             this.valueDtVente.Text = voit._DateVente.ToShortDateString();
             this.valueModele.Text = voit._Modele._Marque._Nom + " " + voit._Modele._Nom;
             this.valueCarb.Text = voit._Carburant._Nom;
+            if (voit._DateVente.CompareTo(DateTime.MinValue)>0)
+            {
+                this.btnVendre.Visible = false;
+                this.btnOperation.Enabled = false;
+                this.btnAssurance.Enabled = false;
+            }
+            else
+            {
+                this.btnVendre.Visible = true;
+                this.btnOperation.Enabled = true;
+                this.btnAssurance.Enabled = true;
+            }
         }
 
         private void btnVoitPrec_Click(object sender, EventArgs e)
@@ -89,6 +101,24 @@ namespace RouleTitine
             {
                 numVoitAffiche = this.lstVoiture.Count - 1;
             }
+        }
+
+        private void btnVendre_Click(object sender, EventArgs e)
+        {
+            Vente dgVente = new Vente(this.lstVoiture[numVoitAffiche]);
+            DialogResult dialog = dgVente.ShowDialog();
+            if (dialog == System.Windows.Forms.DialogResult.OK)
+            {
+                this.lstVoiture[numVoitAffiche] = DALVoiture.getVoitureByImmatriculation(this.lstVoiture[numVoitAffiche]._Immatriculation);
+                numVoitAffiche = 0;
+                this.afficherVoiture(this.lstVoiture[numVoitAffiche]);
+            }
+        }
+
+        private void btnEntretien_Click(object sender, EventArgs e)
+        {
+            GestionEntretien gestionEntretien = new GestionEntretien(this.lstVoiture[numVoitAffiche]);
+            gestionEntretien.ShowDialog();            
         }
     }
 }

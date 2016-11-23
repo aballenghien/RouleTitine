@@ -15,9 +15,9 @@ namespace GestionVoiture
         /// <summary>
         /// Nombre de kilomètre entre chaque entretien
         /// </summary>
-        private double kilometrage;
+        private int kilometrage;
 
-        public double _Kilometrage
+        public int _Kilometrage
         {
             get
             {
@@ -40,5 +40,7 @@ namespace GestionVoiture
                 this.periode = value;
             }
         }
+
+        
     }
 }

@@ -75,12 +75,16 @@ namespace GestionVoiture
             {
                 EntretienAFaire ent = new EntretienAFaire();
                 ent._Id = (int)reader["id"];
-                ent._Modele = DALModele.getModeleById((int)reader["modele"]);
-                ent._EntretienRegulier = DALEntretienRegulier.getEntretienById((int)reader["entretien"]);
+                ent._Modele = mod;
+                ent._EntretienRegulier._Id = (long)reader["entretien"];
                 lstent.Add(ent);
             }
             reader.Close();
             ConnexionSql.CloseConnexion();
+            foreach (EntretienAFaire e in lstent)
+            {
+                e._EntretienRegulier = DALEntretienRegulier.getEntretienById(e._EntretienRegulier._Id);
+            }
             return lstent;
 
         }

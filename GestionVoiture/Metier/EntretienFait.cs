@@ -15,6 +15,7 @@ namespace GestionVoiture
         private Garage garage;
         private Entretien entretien;
         private decimal prix;
+        private string typeEntretien;
 
         public Voiture _Voiture
         {
@@ -109,6 +110,18 @@ namespace GestionVoiture
             set
             {
                 this.id= value;
+            }
+        }
+
+        public string _TypeEntretien
+        {
+            get
+            {
+                return this.typeEntretien;
+            }
+            set
+            {
+                this.typeEntretien = value;
             }
         }
     }

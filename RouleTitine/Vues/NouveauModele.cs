@@ -49,6 +49,7 @@ namespace RouleTitine
 
         private void btnNouvelEntretien_Click(object sender, EventArgs e)
         {
+            //TODO corriger le problème du bouton de suppression qui ne s'affiche pas
             // création d'une nouvelle ligne pour saisir un entretien
             this.nbEntretien += 1;
             this.panelEntretien.Controls.Remove(btnSupEntretien);

@@ -84,6 +84,30 @@ namespace GestionVoiture
 
         }
 
+        public static void getSetEntretiensReguliers(Modele mod)
+        {
+            MySqlCommand requete = new MySqlCommand();
+            requete.Connection = ConnexionSql.Instance._Cnx;
+            ConnexionSql.OpenConnexion();
+            requete.CommandText = "SELECT id, nom, kilometrage, nombreMois "
+            + "FROM entretienregulier "
+            + "INNER JOIN entretienafaire ON id = entretien "
+            + "WHERE modele = @modele ";
+            requete.Parameters.AddWithValue("@modele", mod._Id);
+            MySqlDataReader reader = requete.ExecuteReader();
+            while (reader.Read())
+            {
+                EntretienRegulier ent = new EntretienRegulier();
+                ent._Id = (int)reader["id"];
+                ent._Kilometrage = (int)reader["kilometrage"];
+                ent._Periode = (int)reader["nombreMois"];
+                mod._LstEntretiens = new List<EntretienRegulier>();
+                mod._LstEntretiens.Add(ent);
+            }
+            reader.Close();
+            ConnexionSql.CloseConnexion();
+        }
+
 
 
         public static List<Modele> getModelesByMarque(Marque marque)

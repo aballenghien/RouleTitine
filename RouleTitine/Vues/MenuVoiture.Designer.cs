@@ -38,6 +38,7 @@
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ajouterUneVoitureToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.valueCarb = new System.Windows.Forms.Label();
             this.lblCarb = new System.Windows.Forms.Label();
             this.valueModele = new System.Windows.Forms.Label();
             this.lblModele = new System.Windows.Forms.Label();
@@ -53,7 +54,7 @@
             this.valueImmat = new System.Windows.Forms.Label();
             this.btnVoitSuiv = new System.Windows.Forms.Button();
             this.btnVoitPrec = new System.Windows.Forms.Button();
-            this.valueCarb = new System.Windows.Forms.Label();
+            this.btnVendre = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.imgVoiture)).BeginInit();
             this.barreEtatVoiture.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -83,6 +84,7 @@
             this.btnEntretien.TabIndex = 3;
             this.btnEntretien.Text = "Gérer l\'entretien de la voiture";
             this.btnEntretien.UseVisualStyleBackColor = true;
+            this.btnEntretien.Click += new System.EventHandler(this.btnEntretien_Click);
             // 
             // lblEntretien
             // 
@@ -168,6 +170,18 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(201, 315);
             this.tableLayoutPanel1.TabIndex = 8;
+            // 
+            // valueCarb
+            // 
+            this.valueCarb.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.valueCarb.AutoSize = true;
+            this.valueCarb.Location = new System.Drawing.Point(104, 265);
+            this.valueCarb.Name = "valueCarb";
+            this.valueCarb.Size = new System.Drawing.Size(93, 49);
+            this.valueCarb.TabIndex = 13;
+            this.valueCarb.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblCarb
             // 
@@ -345,23 +359,22 @@
             this.btnVoitPrec.UseVisualStyleBackColor = true;
             this.btnVoitPrec.Click += new System.EventHandler(this.btnVoitPrec_Click);
             // 
-            // valueCarb
+            // btnVendre
             // 
-            this.valueCarb.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.valueCarb.AutoSize = true;
-            this.valueCarb.Location = new System.Drawing.Point(104, 265);
-            this.valueCarb.Name = "valueCarb";
-            this.valueCarb.Size = new System.Drawing.Size(93, 49);
-            this.valueCarb.TabIndex = 13;
-            this.valueCarb.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnVendre.Location = new System.Drawing.Point(465, 490);
+            this.btnVendre.Name = "btnVendre";
+            this.btnVendre.Size = new System.Drawing.Size(132, 23);
+            this.btnVendre.TabIndex = 11;
+            this.btnVendre.Text = "Vendre la voiture";
+            this.btnVendre.UseVisualStyleBackColor = true;
+            this.btnVendre.Click += new System.EventHandler(this.btnVendre_Click);
             // 
             // MenuVoiture
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(643, 520);
+            this.Controls.Add(this.btnVendre);
             this.Controls.Add(this.btnVoitPrec);
             this.Controls.Add(this.btnVoitSuiv);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -413,6 +426,7 @@
         private System.Windows.Forms.Button btnVoitSuiv;
         private System.Windows.Forms.Button btnVoitPrec;
         private System.Windows.Forms.Label valueCarb;
+        private System.Windows.Forms.Button btnVendre;
 
     }
 }

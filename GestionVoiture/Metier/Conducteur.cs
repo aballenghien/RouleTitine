@@ -9,7 +9,7 @@ namespace GestionVoiture
 {
     public class Conducteur
     {
-        private long id;
+        private int id;
         private string nom;
         private string prenom;
         private decimal bonusMalus;
@@ -17,7 +17,7 @@ namespace GestionVoiture
         private byte[] password;
         private string mail;
 
-        public long _Id
+        public int _Id
         {
             get
             {

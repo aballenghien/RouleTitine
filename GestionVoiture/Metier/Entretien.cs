@@ -34,5 +34,10 @@ namespace GestionVoiture
             }
         }
 
+        public override string ToString()
+        {
+            return this.nom;
+        }
+
     }
 }

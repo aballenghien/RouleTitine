@@ -7,12 +7,24 @@ namespace GestionVoiture
 {
     public class Garage
     {
+        private long id;
         private string nom;
         private string adresse;
         private string codePostal;
         private string ville;
         private string telephone;
 
+        public long _Id
+        {
+            get
+            {
+                return this.id;
+            }
+            set
+            {
+                this.id = value;
+            }
+        }
         public string _Adresse
         {
             get

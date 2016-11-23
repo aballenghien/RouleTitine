@@ -88,7 +88,7 @@ namespace GestionVoiture
 
         }
 
-        public static Conducteur getConducteurById(long id)
+        public static Conducteur getConducteurById(int id)
         {
             MySqlCommand requete = new MySqlCommand();
             requete.Connection = ConnexionSql.Instance._Cnx;
