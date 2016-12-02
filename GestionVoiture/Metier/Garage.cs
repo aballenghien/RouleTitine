@@ -7,14 +7,14 @@ namespace GestionVoiture
 {
     public class Garage
     {
-        private long id;
+        private int id;
         private string nom;
         private string adresse;
         private string codePostal;
         private string ville;
         private string telephone;
 
-        public long _Id
+        public int _Id
         {
             get
             {
@@ -84,5 +84,10 @@ namespace GestionVoiture
                 this.ville = value;
             }
         }
+        public override string ToString()
+        {
+            return this.nom;
+        }
     }
+     
 }

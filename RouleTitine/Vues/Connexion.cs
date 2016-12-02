@@ -31,7 +31,7 @@ namespace RouleTitine
             byte[] bytes = System.Text.Encoding.UTF8.GetBytes(this.txtPwd.Text);
             SHA1 sha = new SHA1CryptoServiceProvider();
             byte[] pass = sha.ComputeHash(bytes);
-            if (pass.SequenceEqual(c._Password))
+            if (c._Password!=null && pass.SequenceEqual(c._Password))
             {
                 MenuVoiture mnu = new MenuVoiture(c);
                 mnu.Show();

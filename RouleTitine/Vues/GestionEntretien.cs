@@ -29,14 +29,20 @@ namespace RouleTitine
             this.cbLstEntretiens.Items.Clear();
             this.cbLstEntretiens.Items.Add("--");
             this.cbLstEntretiens.Items.Add("Tapez le nom d'un entretien ponctuel");
-            this.cbLstEntretiens.Items.AddRange(this.voiture._Modele._LstEntretiens.ToArray());
+            if (this.voiture._Modele._LstEntretiens.Count > 0)
+            {
+                this.cbLstEntretiens.Items.AddRange(this.voiture._Modele._LstEntretiens.ToArray());
+            }
 
             //Liste des garages
             List<Garage> lstGarages = DALGarage.getAllGarages();
             this.cbLstGarages.Items.Clear();
             this.cbLstGarages.Items.Add("--");
             this.cbLstGarages.Items.Add("Ajouter un garage");
-            this.cbLstGarages.Items.AddRange(lstGarages.ToArray());
+            if (lstGarages.Count > 0)
+            {
+                this.cbLstGarages.Items.AddRange(lstGarages.ToArray());
+            }
 
             this.gbNouvelEntretien.Visible = true;
 
@@ -73,6 +79,7 @@ namespace RouleTitine
             {
                 case 0:
                     long idEntretien;
+                    EntretienFait ent = new EntretienFait();
                     if (this.txtNomPiece.Text.CompareTo("1") > 0)
                     {
                         EntretienPonctuel unEntretienP = new EntretienPonctuel();
@@ -80,20 +87,22 @@ namespace RouleTitine
                         unEntretienP._PieceConcerne = this.txtNomPiece.Text;
                         idEntretien = DALEntretienPonctuel.insert(unEntretienP);
                         typeEntretien = "P";
+                        ent._Entretien = unEntretienP;
                     }
                     else
                     {
                         EntretienRegulier unEntretienR = (EntretienRegulier)cbLstEntretiens.SelectedItem;
+                        ent._Entretien = unEntretienR;
                         idEntretien = unEntretienR._Id;
                         typeEntretien = "R";
                     }
-                    EntretienFait ent = new EntretienFait();
+                    
                     ent._Date = this.datePickerDtEntretien.Value;
                     ent._Kilometrage = Convert.ToInt32(this.txtKilometrageEntretien.Text);
                     ent._Commentaire = this.txtCommentaireEntretien.Text;
                     ent._Voiture = this.voiture;
                     ent._Garage = (Garage)this.cbLstGarages.SelectedItem;
-                    ent._Prix = Convert.ToDecimal(this.txtMtEntretien);
+                    ent._Prix = Convert.ToDecimal(this.txtMtEntretien.Text);
                     ent._TypeEntretien = typeEntretien;
                     ent._Entretien._Id = idEntretien;
                     long entEnregistre = DALEntretienFait.insert(ent);
@@ -105,7 +114,7 @@ namespace RouleTitine
                     }
                     else
                     {
-                        MessageBox.Show("Erreur lors de l'enregstrement");
+                        MessageBox.Show("Erreur lors de l'enregistrement");
                         ReinitialiserSaisieEntretien();
                     }
                     break;
@@ -130,8 +139,15 @@ namespace RouleTitine
         private int ControleSaisieUtilisateur()
         {
             int controle = 0;
-            if (this.cbLstEntretiens.SelectedItem.ToString().Equals("--")||
-                this.cbLstEntretiens.SelectedItem.ToString().Equals("Tapez le nom d'un entretien ponctuel"))
+            if (this.cbLstEntretiens.SelectedItem == null &&
+                this.cbLstEntretiens.Text.ToString().Equals(""))
+            {
+                controle = 1;
+            }
+            if (controle==0 && 
+               (this.cbLstEntretiens.SelectedItem != null &&
+               (this.cbLstEntretiens.SelectedItem.ToString().Equals("--")||
+                this.cbLstEntretiens.SelectedItem.ToString().Equals("Tapez le nom d'un entretien ponctuel"))))
             {
                 controle = 1;
             }
@@ -147,7 +163,7 @@ namespace RouleTitine
                 controle = 3;
             }
             if(controle==0 &&
-                this.datePickerDtEntretien.Value.CompareTo(DateTime.Today) > 0)
+                this.datePickerDtEntretien.Value.Date.CompareTo(DateTime.Today.Date) > 0)
             {
                 controle = 4;
             }
@@ -170,7 +186,7 @@ namespace RouleTitine
             this.txtMtEntretien.Text = "";
             this.datePickerDtEntretien.Value = DateTime.Today;
             this.txtNomPiece.Text = "";
-            this.gbNouvelEntretien.Visible = false;
+            this.gbNouvelEntretien.Visible= false;
         }
     }
 }

@@ -99,6 +99,7 @@ namespace GestionVoiture
             {
                 EntretienRegulier ent = new EntretienRegulier();
                 ent._Id = (int)reader["id"];
+                ent._Nom = reader["nom"].ToString();
                 ent._Kilometrage = (int)reader["kilometrage"];
                 ent._Periode = (int)reader["nombreMois"];
                 mod._LstEntretiens = new List<EntretienRegulier>();

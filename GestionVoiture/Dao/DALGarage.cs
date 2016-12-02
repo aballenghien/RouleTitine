@@ -77,7 +77,7 @@ namespace GestionVoiture
             while (reader.Read())
             {
                 Garage g = new Garage();
-                g._Id = (long)reader["id"];
+                g._Id = (int)reader["id"];
                 g._Nom = reader["nom"].ToString();
                 g._Adresse = reader["adresse"].ToString();
                 g._Ville = reader["ville"].ToString();
@@ -91,7 +91,7 @@ namespace GestionVoiture
 
         }
 
-        public static Garage getGarageById(long idGarage)
+        public static Garage getGarageById(int idGarage)
         {
             MySqlCommand requete = new MySqlCommand();
             requete.Connection = ConnexionSql.Instance._Cnx;
